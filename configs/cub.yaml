@@ -1,0 +1,29 @@
+data:
+  cub_root: "/Users/sa/Documents/SCU/2025/ML/mlproject2/data/CUB_200_2011"
+  train_split: "/Users/sa/Documents/SCU/2025/ML/mlproject2/data/CUB_200_2011/splits/train.txt"
+  val_split:   "/Users/sa/Documents/SCU/2025/ML/mlproject2/data/CUB_200_2011/splits/val.txt"
+  test_split:  "/Users/sa/Documents/SCU/2025/ML/mlproject2/data/CUB_200_2011/splits/test.txt"
+  image_size: 224
+
+model:
+  backbone: "resnet50"
+  projection_dim: 128
+
+train:
+  backbone_freeze: True
+  batch_size: 32
+  num_workers: 4
+  lr: 1e-4
+  weight_decay: 1e-5
+  epochs: 30
+  log_interval: 100
+  triplet_margin: 0.2
+  checkpoint_dir: "/Users/sa/Documents/SCU/2025/ML/mlproject2/outputs/checkpoints"
+
+embed:
+  batch_size: 64
+  save_dir: "/Users/sa/Documents/SCU/2025/ML/mlproject2/features/embeddings"
+
+eval:
+  num_workers: 4
+  faiss_metric: "cosine"
